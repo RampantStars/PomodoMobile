@@ -1,11 +1,21 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StatusBar } from 'expo-status-bar'
-import { Text, View } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+
+import { AuthProvider } from './app/providers/AuthProvider'
+import { NavigationPanel } from '@/navigation/NavigationPanel'
+
+const queryClient = new QueryClient()
 
 export default function App() {
-	return (
-		<View className='flex-1 items-center justify-center bg-stone-100'>
-			<Text>Pomodoro Timer</Text>
-			<StatusBar style='auto' />
-		</View>
-	)
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <SafeAreaProvider>
+          <NavigationPanel />
+        </SafeAreaProvider>
+      </AuthProvider>
+      <StatusBar style='light' />
+    </QueryClientProvider>
+  )
 }
