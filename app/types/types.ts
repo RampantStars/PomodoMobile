@@ -1,4 +1,4 @@
-import { AntDesign } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 
 import { TypeRootStackParamsList } from '@/navigation/navigation.types'
 
@@ -11,7 +11,7 @@ export interface IUser {
 export type TUser = IUser | null
 
 export interface IMenuItem {
-	iconName: keyof typeof AntDesign.glyphMap
+	iconName: keyof typeof Feather.glyphMap
 	path: keyof TypeRootStackParamsList
 }
 

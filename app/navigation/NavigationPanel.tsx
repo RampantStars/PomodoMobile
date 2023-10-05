@@ -1,6 +1,6 @@
 import {
-  NavigationContainer,
-  useNavigationContainerRef
+	NavigationContainer,
+	useNavigationContainerRef
 } from '@react-navigation/native'
 import React, { FC } from 'react'
 
@@ -11,34 +11,34 @@ import { useAuth } from '@/hooks/useAuth'
 import { PrivateNavigation } from './PrivateNavigation'
 
 export const NavigationPanel: FC = () => {
-  const { user } = useAuth()
+	const { user } = useAuth()
 
-  const [currentRoute, setCurrentRoute] = React.useState<string | undefined>(
-    undefined
-  )
+	const [currentRoute, setCurrentRoute] = React.useState<string | undefined>(
+		undefined
+	)
 
-  const navRef = useNavigationContainerRef()
+	const navRef = useNavigationContainerRef()
 
-  React.useEffect(() => {
-    setCurrentRoute(navRef.getCurrentRoute()?.name)
+	React.useEffect(() => {
+		setCurrentRoute(navRef.getCurrentRoute()?.name)
 
-    const listener = navRef.addListener('state', () =>
-      setCurrentRoute(navRef.getCurrentRoute()?.name)
-    )
+		const listener = navRef.addListener('state', () =>
+			setCurrentRoute(navRef.getCurrentRoute()?.name)
+		)
 
-    return () => {
-      navRef.removeListener('state', listener)
-    }
-  }, [])
+		return () => {
+			navRef.removeListener('state', listener)
+		}
+	}, [])
 
-  return (
-    <>
-      <NavigationContainer ref={navRef}>
-        <PrivateNavigation />
-      </NavigationContainer>
-      {user && currentRoute && (
-        <BottomMenu nav={navRef.navigate} currentRoute={currentRoute} />
-      )}
-    </>
-  )
+	return (
+		<>
+			<NavigationContainer ref={navRef}>
+				<PrivateNavigation />
+			</NavigationContainer>
+			{user && currentRoute && (
+				<BottomMenu nav={navRef.navigate} currentRoute={currentRoute} />
+			)}
+		</>
+	)
 }

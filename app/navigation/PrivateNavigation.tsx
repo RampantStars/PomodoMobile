@@ -7,23 +7,28 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { TypeRootStackParamsList } from './navigation.types'
 import { routes } from './routes'
-
+import { COLOR } from '@/const/color'
 
 export const PrivateNavigation: FC = () => {
+	const Stack = createNativeStackNavigator<TypeRootStackParamsList>()
 
-  const Stack = createNativeStackNavigator<TypeRootStackParamsList>()
+	const { user } = useAuth()
 
-  const { user } = useAuth()
-
-  return (
-    <Stack.Navigator screenOptions={{}}>
-      {user ? (
-        routes.map((route) => (
-          <Stack.Screen key={route.name} {...route}></Stack.Screen>
-        ))
-      ) : (
-        <Stack.Screen name='Auth' component={Auth} />
-      )}
-    </Stack.Navigator>
-  )
+	return (
+		<Stack.Navigator
+			screenOptions={{
+				headerShown: false,
+				contentStyle: { backgroundColor: COLOR.PRIMARY_DARK },
+				animation: 'none'
+			}}
+		>
+			{user ? (
+				routes.map((route) => (
+					<Stack.Screen key={route.name} {...route}></Stack.Screen>
+				))
+			) : (
+				<Stack.Screen name='Auth' component={Auth} />
+			)}
+		</Stack.Navigator>
+	)
 }
