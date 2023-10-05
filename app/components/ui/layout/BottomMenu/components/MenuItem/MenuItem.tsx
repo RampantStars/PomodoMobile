@@ -2,11 +2,11 @@ import { Feather } from '@expo/vector-icons'
 import { FC } from 'react'
 import { Pressable } from 'react-native'
 
+import { COLOR } from '@/const/color'
+
 import { IMenuItem, TNav } from '@/types/types'
 
 import { ICON_SIZE } from '../../const'
-
-import { COLOR } from '@/const/color'
 
 interface IMenuItemProps {
 	item: IMenuItem

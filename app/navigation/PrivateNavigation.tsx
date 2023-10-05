@@ -5,9 +5,10 @@ import { Auth } from '@/components/screens'
 
 import { useAuth } from '@/hooks/useAuth'
 
+import { COLOR } from '@/const/color'
+
 import { TypeRootStackParamsList } from './navigation.types'
 import { routes } from './routes'
-import { COLOR } from '@/const/color'
 
 export const PrivateNavigation: FC = () => {
 	const Stack = createNativeStackNavigator<TypeRootStackParamsList>()

@@ -16,3 +16,9 @@ export interface IMenuItem {
 }
 
 export type TNav = (name: keyof TypeRootStackParamsList) => void
+
+export interface IAuthFormData {
+	password: string
+	name: string
+	email: string
+}
