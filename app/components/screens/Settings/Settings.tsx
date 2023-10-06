@@ -1,10 +1,7 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
+
+import { Layout } from '@/components/ui/layout/Layout'
 
 export const Settings: FC = () => {
-	return (
-		<View>
-			<Text>Settings</Text>
-		</View>
-	)
+	return <Layout title='Настройка таймера'></Layout>
 }

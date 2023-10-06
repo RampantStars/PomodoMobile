@@ -1,10 +1,7 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
+
+import { Layout } from '@/components/ui/layout/Layout'
 
 export const Statistics: FC = () => {
-	return (
-		<View>
-			<Text>Statistics</Text>
-		</View>
-	)
+	return <Layout title='Статистика'></Layout>
 }

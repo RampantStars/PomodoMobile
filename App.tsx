@@ -16,7 +16,7 @@ export default function App() {
 					<NavigationPanel />
 				</SafeAreaProvider>
 			</AuthProvider>
-			<StatusBar style='light' />
+			<StatusBar style='dark' />
 		</QueryClientProvider>
 	)
 }
