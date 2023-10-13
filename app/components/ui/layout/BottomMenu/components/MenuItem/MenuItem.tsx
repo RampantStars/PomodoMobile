@@ -3,10 +3,9 @@ import { FC } from 'react'
 import { Pressable } from 'react-native'
 
 import { COLOR } from '@/const/color'
+import { ICON_SIZE } from '@/const/icon'
 
 import { IMenuItem, TNav } from '@/types/types'
-
-import { ICON_SIZE } from '../../const'
 
 interface IMenuItemProps {
 	item: IMenuItem
@@ -24,7 +23,7 @@ export const MenuItem: FC<IMenuItemProps> = ({ item, currentRoute, nav }) => {
 		>
 			<Feather
 				name={item.iconName}
-				size={ICON_SIZE}
+				size={ICON_SIZE.SMALL}
 				color={isActive ? COLOR.PRIMARY : COLOR.SECONDARY}
 			></Feather>
 		</Pressable>

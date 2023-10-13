@@ -18,5 +18,3 @@ export const menuData: IMenuItem[] = [
 		iconName: 'user'
 	}
 ]
-
-export const ICON_SIZE = 26

@@ -1,5 +1,7 @@
 import { Feather } from '@expo/vector-icons'
 
+import { ENUM_STATUS } from '@/components/ui/layout/Timer/const'
+
 import { TypeRootStackParamsList } from '@/navigation/navigation.types'
 
 export interface IUser {
@@ -21,4 +23,13 @@ export interface IAuthFormData {
 	password: string
 	name: string
 	email: string
+}
+
+export interface ITimerOptions {
+	key: number
+	isPlaying: boolean
+	status: ENUM_STATUS
+	currentSession: number
+	currentBrakeSession: number
+	isAllSessionCompleted: boolean
 }

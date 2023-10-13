@@ -1,0 +1,6 @@
+export const ICON_SIZE = {
+	VERY_SMALL: 10,
+	LITTLE: 15,
+	SMALL: 26,
+	MEDIUM: 35
+}

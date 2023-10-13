@@ -1,38 +1,78 @@
+import { Ionicons } from '@expo/vector-icons'
 import cn from 'clsx'
-import React, { FC } from 'react'
-import { Text, View } from 'react-native'
+import { FC } from 'react'
+import { View } from 'react-native'
 
-type TItem = {
-	id: number
-	current: boolean
-	complied: boolean
+import { COLOR } from '@/const/color'
+import { ICON_SIZE } from '@/const/icon'
+
+import { ITimerOptions } from '@/types/types'
+
+import { ENUM_STATUS } from '../../const'
+
+interface IProgressBarProps
+	extends Pick<
+		ITimerOptions,
+		'currentSession' | 'currentBrakeSession' | 'status'
+	> {
+	sessionCount: number
+	restCircle: number
+	isSmallIndicator: boolean
 }
 
-interface IProgressBarProps {
-	data: TItem[]
-}
-
-export const ProgressBar: FC<IProgressBarProps> = ({ data }) => {
+export const ProgressBar: FC<IProgressBarProps> = ({
+	currentSession,
+	sessionCount,
+	isSmallIndicator,
+	restCircle,
+	status,
+	currentBrakeSession
+}) => {
 	return (
 		<View className='mt-7 flex-row items-center justify-center'>
-			{data.map((item, index) => (
-				<View className='flex-row items-center'>
+			{Array.from(Array(sessionCount)).map((_, index) => (
+				<View className='flex-row items-center relative' key={`key-${index}`}>
 					<View
 						className={cn(
-							'w-4 h-4 rounded-full',
-							item.complied
+							' rounded-full',
+							currentSession > index
 								? 'bg-primary'
 								: 'border-transparent bg-secondary opacity-50',
-							item.current &&
-								' w-6 h-6 bg-transparent border-primary border-4 opacity-70'
+							currentSession === index &&
+								`w-6 h-6 bg-transparent border-primary opacity-70 ${
+									isSmallIndicator ? 'border-2' : 'border-4'
+								}`,
+							isSmallIndicator ? ' w-3 h-3' : 'w-4 h-4'
 						)}
-						key={item.id}
 					/>
-					{index !== data.length - 1 && (
+
+					{!((index + 1) % restCircle) && index + 1 !== sessionCount && (
 						<View
 							className={cn(
-								'w-4 h-0.5  opacity-50',
-								item.complied ? 'bg-primary' : 'bg-secondary'
+								'absolute z-30   w-5 h-5',
+								isSmallIndicator ? 'left-2.5 -top-3' : 'left-4 -top-4'
+							)}
+						>
+							<Ionicons
+								name='bed-sharp'
+								color={
+									currentBrakeSession > index / restCircle
+										? COLOR.PRIMARY
+										: COLOR.SECONDARY
+								}
+								size={
+									isSmallIndicator ? ICON_SIZE.VERY_SMALL : ICON_SIZE.LITTLE
+								}
+							/>
+						</View>
+					)}
+
+					{index !== sessionCount - 1 && (
+						<View
+							className={cn(
+								'h-0.5  opacity-50',
+								currentSession > index ? 'bg-primary' : 'bg-secondary',
+								isSmallIndicator ? ' w-2' : 'w-4'
 							)}
 						/>
 					)}
