@@ -9,6 +9,7 @@ import { ICON_SIZE } from '@/const/icon'
 import { ITimerOptions } from '@/types/types'
 
 import { ENUM_STATUS } from '../../const'
+import { useTimer } from '../../hook'
 
 interface IProgressBarProps
 	extends Pick<

@@ -24,7 +24,9 @@ export const TimerText: FC<ITimerTextProps> = ({ time, brakeTime, status }) => {
 
 	return (
 		<View className='justify-around'>
-			<Text className='self-center text-4xl text-white font-bold'>{`${minutes}:${seconds}`}</Text>
+			{status !== ENUM_STATUS.COMPLETED && (
+				<Text className='self-center text-4xl text-white font-bold'>{`${minutes}:${seconds}`}</Text>
+			)}
 			<Text className='pl-4 self-center text-2xl text-white font-bold '>
 				{status}
 			</Text>
