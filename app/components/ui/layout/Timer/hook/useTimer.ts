@@ -17,6 +17,7 @@ export const useTimer = () => {
 	} as ITimerOptions)
 
 	const { currentSession, status } = timer
+
 	const completeSession = useCallback(() => {
 		setTimer((prev) => ({ ...prev, isPlaying: false, key: prev.key + 1 }))
 
